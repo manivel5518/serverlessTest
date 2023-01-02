@@ -1,0 +1,39 @@
+service: cred
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  postmethod:
+    handler: handler.postmethod
+    events:
+      - http:
+          path: post-data
+          method: POST
+          cors: "*"
+  putmethod:
+    handler: handler.putmethod
+    events:
+      - http:
+          path: put-data
+          method: PUT
+          cors: "*"
+  deletemethod:
+    handler: handler.deletemethod
+    events:
+      - http:
+          path: delete-data
+          method: DELETE
+          cors: "*"
+  getmethod:
+    handler: handler.getmethod
+    events:
+      - http:
+          path: get-data
+          method: POST
+          cors: "*"
+plugins:
+  - serverless-offline
